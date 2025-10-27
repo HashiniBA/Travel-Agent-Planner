@@ -142,8 +142,8 @@ from dotenv import load_dotenv
 import json
 
 # Add src directory to Python path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
-from travel_planner_ai.crew import run_crew
+# sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+from crew import run_crew
 
 load_dotenv()
 
