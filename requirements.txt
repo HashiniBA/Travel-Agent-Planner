@@ -1,29 +1,21 @@
-# Core CrewAI packages
 crewai==1.1.0
+crewai[google-genai]==1.1.0
 crewai-tools==1.1.0
-
-# Streamlit
 streamlit==1.29.0
-
-# Google Generative AI and LangChain
 google-generativeai==0.4.1
 langchain-google-genai==0.0.11
-
-# Environment management
 python-dotenv==1.2.1
-
-# Protobuf for Streamlit / Google SDK compatibility
 protobuf>=3.20,<5
-
-# ChromaDB for vector storage
 chromadb==1.1.0
-
-# LangTrace SDK for tracing
 langtrace-python-sdk==3.8.21
 
-# Align all telemetry dependencies (downgraded to 1.30.0 for protobuf<5 compatibility)
+# Remove conflicting telemetry proto package
 opentelemetry-api==1.30.0
 opentelemetry-sdk==1.30.0
 opentelemetry-exporter-otlp-proto-grpc==1.30.0
 opentelemetry-exporter-otlp-proto-http==1.30.0
-opentelemetry-proto==1.30.0
+# ❌ Removed opentelemetry-proto (this causes protobuf>=5 conflict)
+
+# Compatibility for Streamlit Cloud
+typing-extensions>=4.5.0
+tenacity>=8.2.0
