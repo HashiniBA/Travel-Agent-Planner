@@ -1,4 +1,5 @@
-crewai
+crewai[google-genai]
+langtrace-python-sdk
 streamlit
 google-generativeai
 python-dotenv
