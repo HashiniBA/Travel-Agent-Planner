@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 from dotenv import load_dotenv
-from src.travel_planner_ai.crew import run_crew
+from crew import run_crew
 import json
 
 load_dotenv()
