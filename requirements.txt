@@ -1,4 +1,6 @@
+crewai
 streamlit
+google-generativeai
 python-dotenv
-langchain
-langchain-google-genai
+langtrace-python-sdk
+chromadb
