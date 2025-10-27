@@ -1,4 +1,4 @@
-crewai[google-genai]
+crewai
 langtrace-python-sdk
 streamlit
 google-generativeai
