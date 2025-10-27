@@ -6,6 +6,8 @@ langchain-google-genai==0.0.11
 python-dotenv==1.2.1
 chromadb==1.1.0
 langtrace-python-sdk==3.8.21
-protobuf>=3.20,<5
+protobuf>=3.20,<5  # Keep protobuf range to avoid conflicts
+opentelemetry-sdk>=1.25.0,<2.0.0  # Loosen SDK version range to match dependencies
+opentelemetry-exporter-otlp-proto-grpc==1.30.0  # Match version to avoid conflict with protobuf
 typing-extensions>=4.5.0
 tenacity>=8.2.0
