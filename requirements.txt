@@ -1,5 +1,6 @@
 --upgrade pip
 numpy<2.0
+chromadb
 crewai
 streamlit
 google-generativeai
