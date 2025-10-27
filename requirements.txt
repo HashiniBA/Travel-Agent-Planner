@@ -1,11 +1,13 @@
-crewai==1.1.0
-crewai-tools==1.1.0
+crewai==0.28.0
+crewai-tools==0.28.0
 streamlit==1.29.0
 google-generativeai==0.4.1
 langchain-google-genai==0.0.11
 python-dotenv==1.2.1
-chromadb==1.1.0
+chromadb==0.4.24
 langtrace-python-sdk==3.8.21
-protobuf>=3.20,<5  # Keep protobuf range to avoid conflicts
+opentelemetry-sdk==1.30.0
+opentelemetry-exporter-otlp-proto-grpc==1.30.0
+protobuf>=3.20,<5
 typing-extensions>=4.5.0
 tenacity>=8.2.0
