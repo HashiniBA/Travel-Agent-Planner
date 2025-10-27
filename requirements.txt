@@ -1,4 +1,5 @@
 --upgrade pip
+numpy<2.0
 crewai
 crewai-tools
 streamlit
