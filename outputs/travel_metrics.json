@@ -1,0 +1,12 @@
+{
+  "execution_time": 55.2,
+  "agents_used": [
+    "Responsible Flight Booking Specialist",
+    "Inclusive Accommodation Specialist",
+    "Responsible Tourism Activities Expert"
+  ],
+  "tasks_completed": 3,
+  "success": true,
+  "langtrace_enabled": true,
+  "usage_metrics": "total_tokens=17241 prompt_tokens=10404 cached_prompt_tokens=0 completion_tokens=6837 successful_requests=6"
+}

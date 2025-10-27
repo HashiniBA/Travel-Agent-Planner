@@ -1,0 +1,26 @@
+[project]
+name = "travel-planner-ai"
+version = "0.1.0"
+description = "AI-powered travel planning using CrewAI with responsible AI practices"
+authors = [{name = "Travel AI Team"}]
+readme = "README.md"
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai>=0.70.1",
+    "crewai-tools>=0.12.1", 
+    "streamlit>=1.29.0",
+    "google-generativeai>=0.3.2",
+    "langchain-google-genai>=2.0.4",
+    "python-dotenv>=1.0.0",
+    "langtrace-python-sdk>=3.8.21"
+]
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.crewai]
+main_agent = "flight_agent"
+
+[project.scripts]
+travel-planner = "travel_planner_ai.main:main"
