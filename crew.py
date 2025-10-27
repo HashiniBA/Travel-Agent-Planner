@@ -3,22 +3,43 @@ import os
 import time
 import json
 from dotenv import load_dotenv
-from langtrace_python_sdk import langtrace, with_langtrace_root_span
 from crewai import Crew
 
-from src.travel_planner_ai.agents import TravelAgents
-from src.travel_planner_ai.tasks import TravelTasks
+# Handle langtrace import gracefully
+try:
+    from langtrace_python_sdk import langtrace, with_langtrace_root_span
+    LANGTRACE_AVAILABLE = True
+except ImportError:
+    LANGTRACE_AVAILABLE = False
+    # Create dummy decorator if langtrace is not available
+    def with_langtrace_root_span(name):
+        def decorator(func):
+            return func
+        return decorator
+
+try:
+    from src.travel_planner_ai.agents import TravelAgents
+    from src.travel_planner_ai.tasks import TravelTasks
+except ImportError:
+    # Fallback for different import paths
+    try:
+        from travel_planner_ai.agents import TravelAgents
+        from travel_planner_ai.tasks import TravelTasks
+    except ImportError:
+        raise ImportError("Could not import TravelAgents and TravelTasks. Check your project structure.")
 
 load_dotenv()
 
 # Fix Unicode encoding for Windows console
 os.environ['PYTHONIOENCODING'] = 'utf-8'
 
-try:
-    langtrace.init(api_key=os.getenv("LANGTRACE_API_KEY"))
-except UnicodeEncodeError:
-    # Fallback if Unicode issues persist
-    pass
+# Initialize langtrace if available
+if LANGTRACE_AVAILABLE:
+    try:
+        langtrace.init(api_key=os.getenv("LANGTRACE_API_KEY"))
+    except Exception:
+        # Fallback if langtrace initialization fails
+        LANGTRACE_AVAILABLE = False
 
 class TravelCrew:
     def __init__(self):
@@ -39,8 +60,16 @@ class TravelCrew:
             memory=True
         )
 
-@with_langtrace_root_span("travel_planning_crew")
-def run_crew(source, destination, start_date, end_date, budget):
+# Apply langtrace decorator only if available
+if LANGTRACE_AVAILABLE:
+    @with_langtrace_root_span("travel_planning_crew")
+    def run_crew(source, destination, start_date, end_date, budget):
+        return _run_crew_impl(source, destination, start_date, end_date, budget)
+else:
+    def run_crew(source, destination, start_date, end_date, budget):
+        return _run_crew_impl(source, destination, start_date, end_date, budget)
+
+def _run_crew_impl(source, destination, start_date, end_date, budget):
     start_time = time.time()
     try:
         travel_crew = TravelCrew()
@@ -67,7 +96,7 @@ def run_crew(source, destination, start_date, end_date, budget):
             "agents_used": [agent.role for agent in crew.agents],
             "tasks_completed": len(crew.tasks),
             "success": True,
-            "langtrace_enabled": True,
+            "langtrace_enabled": LANGTRACE_AVAILABLE,
             "usage_metrics": str(crew.usage_metrics) if hasattr(crew, 'usage_metrics') else None
         }
         
@@ -83,6 +112,6 @@ def run_crew(source, destination, start_date, end_date, budget):
             "tasks_completed": 0,
             "success": False,
             "error": str(e),
-            "langtrace_enabled": True
+            "langtrace_enabled": LANGTRACE_AVAILABLE
         }
         return f"Error: {str(e)}", metrics
