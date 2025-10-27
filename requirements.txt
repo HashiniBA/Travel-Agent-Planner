@@ -1,16 +1,9 @@
-# Core CrewAI dependencies
-crewai>=0.203.1
-crewai-tools>=0.76.0
-chromadb>=1.1.1
-
-# Streamlit web interface
-streamlit>=1.50.0
-
-# Google AI integration
-google-generativeai>=0.8.5
-langchain-google-genai>=2.0.0,<3.0.0
-
-# Utilities
+crewai==1.1.0
+crewai[google-genai]==1.1.0
+crewai-tools==1.1.0
+streamlit==1.31.0
+google-generativeai==0.3.2
+langchain-google-genai
 python-dotenv>=1.1.1
-langtrace-python-sdk>=3.8.21
-protobuf>=4.25.0,<6.0.0
+langtrace-python-sdk
+protobuf==4.25.3
