@@ -1,7 +1,10 @@
---upgrade pip
-numpy<2.0
-chromadb
-crewai
-streamlit
-google-generativeai
-python-dotenv
+crewai==1.1.0
+numpy==1.24.0
+chromadb==1.1.0
+protobuf>=3.20,<5
+streamlit==1.29.0
+google-generativeai==0.4.1
+langtrace-python-sdk==3.8.21
+typing-extensions>=4.5.0
+tenacity>=8.2.0
+python-dotenv==1.2.1
