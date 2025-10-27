@@ -1,13 +1,12 @@
---upgrade pip
-numpy<2.0
-crewai
-crewai-tools
-streamlit
-google-generativeai
-langchain-google-genai
-python-dotenv
-chromadb
-langtrace-python-sdk
-protobuf
-typing-extensions
-tenacity
+crewai==1.1.0
+crewai-tools==1.1.0
+streamlit==1.29.0
+google-generativeai==0.4.1
+langchain-google-genai==0.0.11
+python-dotenv==1.2.1
+chromadb==1.1.0
+langtrace-python-sdk==3.8.21
+protobuf>=3.20,<5
+numpy==1.24.0  # Ensure compatibility with chromadb and avoid np.float_ error
+typing-extensions>=4.5.0
+tenacity>=8.2.0
