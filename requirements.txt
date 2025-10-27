@@ -1,21 +1,23 @@
+# Core dependencies
 crewai==1.1.0
-crewai[google-genai]==1.1.0
 crewai-tools==1.1.0
 streamlit==1.29.0
 google-generativeai==0.4.1
 langchain-google-genai==0.0.11
 python-dotenv==1.2.1
-protobuf>=3.20,<5
 chromadb==1.1.0
 langtrace-python-sdk==3.8.21
 
-# Remove conflicting telemetry proto package
-opentelemetry-api==1.30.0
-opentelemetry-sdk==1.30.0
-opentelemetry-exporter-otlp-proto-grpc==1.30.0
-opentelemetry-exporter-otlp-proto-http==1.30.0
-# ❌ Removed opentelemetry-proto (this causes protobuf>=5 conflict)
+# Remove opentelemetry-proto to resolve protobuf conflict
+# pin protobuf to <=4.x versions for compatibility across both Streamlit and Google Generative AI
+protobuf>=3.20,<5
 
-# Compatibility for Streamlit Cloud
+# Other dependencies
 typing-extensions>=4.5.0
 tenacity>=8.2.0
+
+# Optional telemetry or logging tools
+# opentelemetry-api==1.30.0 (Optional, if you need telemetry and it is compatible with protobuf<5)
+# opentelemetry-sdk==1.30.0
+# opentelemetry-exporter-otlp-proto-grpc==1.30.0
+# opentelemetry-exporter-otlp-proto-http==1.30.0
