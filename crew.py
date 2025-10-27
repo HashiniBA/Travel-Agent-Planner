@@ -55,9 +55,8 @@ class TravelCrew:
         return Crew(
             agents=agents,
             tasks=tasks,
-            verbose=True,
-            manager_llm=self.llm,
-            memory=True
+            verbose=False,
+            memory=False
         )
 
 # Apply langtrace decorator only if available
