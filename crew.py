@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 from langtrace_python_sdk import langtrace, with_langtrace_root_span
 from crewai import Crew
 
-from .agents import TravelAgents
-from .tasks import TravelTasks
+from src.travel_planner_ai.agents import TravelAgents
+from src.travel_planner_ai.tasks import TravelTasks
 
 load_dotenv()
 
